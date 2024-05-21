@@ -2,7 +2,15 @@ require("dotenv").config();
 
 const MODEL = "gpt-3.5-turbo";
 const API_KEY = process.env.OPENAI_API_KEY;
-const DIETRY_PREFS = ["Vegan", "Non-Veg", "Paleo", "Keto", "Gluten-free"];
+const DIETRY_PREFS = [
+  "Vegan",
+  "Non-Veg",
+  "Paleo",
+  "Keto",
+  "Gluten-free",
+  "Veg+Non-Veg",
+  "Mix"
+];
 const GOALS = [
   "Weight loss",
   "Weight gain",
@@ -45,56 +53,91 @@ const JSON_SCHEMA_FIXED_DAILY = {
 
 const JSON_SCHEMA_FLEXIBLE_DAILY = {
   mealPlan: {
-    0: {
-      Recipe: "Recipe Name",
-      Time: "Time for the meal",
-      Ingredients: ["list of all ingredients seperated by commas"],
-      Calories: "Integer Value",
-      Protein: "Integer Value (unit is in grams)",
-      Carbohydrates: "Integer Value (unit is in grams)",
-      Fats: "Integer Value (unit is in grams)",
-    },
-    1: {
-      Recipe: "Recipe Name",
-      Time: "Time for the meal",
-      Ingredients: ["list of all ingredients seperated by commas"],
-      Calories: "Integer Value",
-      Protein: "Integer Value (unit is in grams)",
-      Carbohydrates: "Integer Value (unit is in grams)",
-      Fats: "Integer Value (unit is in grams)",
-    },
+    meals: [],
   },
 };
 
 const JSON_SCHEMA_WEEKLY = {
   mealPlan: {
-    Monday: {
-      0: {
+    Monday: [
+      {
         Recipe: "Recipe Name",
-        Ingredients: ["list of all ingredients seperated by commas"],
+        Ingredients: ["list of all ingredients separated by commas"],
         Calories: "Integer Value",
         Protein: "Integer Value (unit is in grams)",
         Carbohydrates: "Integer Value (unit is in grams)",
         Fats: "Integer Value (unit is in grams)",
       },
-      1: {
+      // Additional meals can be added here
+    ],
+    Tuesday: [
+      {
         Recipe: "Recipe Name",
-        Ingredients: ["list of all ingredients seperated by commas"],
+        Ingredients: ["list of all ingredients separated by commas"],
         Calories: "Integer Value",
         Protein: "Integer Value (unit is in grams)",
         Carbohydrates: "Integer Value (unit is in grams)",
         Fats: "Integer Value (unit is in grams)",
       },
-    },
-    Tuesday: {},
-    Wednesday: {},
-    Thursday: {},
-    Friday: {},
-    Saturday: {},
-    Sunday: {},
+      // Additional meals can be added here
+    ],
+    Wednesday: [
+      {
+        Recipe: "Recipe Name",
+        Ingredients: ["list of all ingredients separated by commas"],
+        Calories: "Integer Value",
+        Protein: "Integer Value (unit is in grams)",
+        Carbohydrates: "Integer Value (unit is in grams)",
+        Fats: "Integer Value (unit is in grams)",
+      },
+      // Additional meals can be added here
+    ],
+    Thursday: [
+      {
+        Recipe: "Recipe Name",
+        Ingredients: ["list of all ingredients separated by commas"],
+        Calories: "Integer Value",
+        Protein: "Integer Value (unit is in grams)",
+        Carbohydrates: "Integer Value (unit is in grams)",
+        Fats: "Integer Value (unit is in grams)",
+      },
+      // Additional meals can be added here
+    ],
+    Friday: [
+      {
+        Recipe: "Recipe Name",
+        Ingredients: ["list of all ingredients separated by commas"],
+        Calories: "Integer Value",
+        Protein: "Integer Value (unit is in grams)",
+        Carbohydrates: "Integer Value (unit is in grams)",
+        Fats: "Integer Value (unit is in grams)",
+      },
+      // Additional meals can be added here
+    ],
+    Saturday: [
+      {
+        Recipe: "Recipe Name",
+        Ingredients: ["list of all ingredients separated by commas"],
+        Calories: "Integer Value",
+        Protein: "Integer Value (unit is in grams)",
+        Carbohydrates: "Integer Value (unit is in grams)",
+        Fats: "Integer Value (unit is in grams)",
+      },
+      // Additional meals can be added here
+    ],
+    Sunday: [
+      {
+        Recipe: "Recipe Name",
+        Ingredients: ["list of all ingredients separated by commas"],
+        Calories: "Integer Value",
+        Protein: "Integer Value (unit is in grams)",
+        Carbohydrates: "Integer Value (unit is in grams)",
+        Fats: "Integer Value (unit is in grams)",
+      },
+      // Additional meals can be added here
+    ],
   },
 };
-
 
 module.exports = {
   MODEL,

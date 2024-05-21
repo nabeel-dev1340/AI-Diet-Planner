@@ -10,7 +10,7 @@ const MealPrefsSchema = Joi.object({
     .valid(...GOALS)
     .insensitive()
     .required(),
-  caloric_intake: Joi.number().integer().required(),
+  caloric_intake: Joi.number().integer(),
   proteins: Joi.number().integer(),
   carbohydrates: Joi.number().integer(),
   fats: Joi.number().integer(),
@@ -19,7 +19,7 @@ const MealPrefsSchema = Joi.object({
     .valid(...PLAN_TYPE)
     .insensitive()
     .required(),
-  meals_frequency: Joi.number().integer().default(3),
+  meals_frequency: Joi.number().integer().min(0).max(5).default(3),
 });
 
 module.exports = { MealPrefsSchema };

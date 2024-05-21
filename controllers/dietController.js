@@ -22,7 +22,11 @@ const generateDietPlan = async (req, res) => {
       
       - **Dietary Preferences**: ${value.dietry_prefs}
       - **Goal**: ${value.goal}
-      - **Caloric Intake**: ${value.caloric_intake} calories
+      ${
+        value.caloric_intake
+          ? `- **Caloric Intake**: ${value.caloric_intake} calories`
+          : ""
+      }
     
       ${value.proteins ? `- **Protein**: ${value.proteins} grams` : ""}
       ${value.fats ? `- **Fats**: ${value.fats} grams` : ""}
@@ -65,7 +69,7 @@ const generateDietPlan = async (req, res) => {
       response.data.choices[0].message.content
     );
 
-    return res.status(200).json({ story: JSON.parse(cleanedRes) });
+    return res.status(200).json({ response: JSON.parse(cleanedRes) });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: "Internal Server Error" });
